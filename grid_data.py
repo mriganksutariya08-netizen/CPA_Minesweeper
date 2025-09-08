@@ -106,18 +106,3 @@ def get_neighbours(row, column):
 
 #print(get_neighbours(5, 6))
 
-def get_tile_row_colors(image, row, col, y_offset, tile_size=32):
-    colors = []
-    # compute tile top-left (relative to cropped image)
-    tile_x = col * tile_size
-    tile_y = row * tile_size
-
-    for x in range(tile_size):
-        pixel = image.getpixel((tile_x + x, tile_y + y_offset))
-        colors.append(pixel)
-
-    return colors
-
-row_colors = get_tile_row_colors(image, row=0, col=4, y_offset=26)
-
-print(row_colors)

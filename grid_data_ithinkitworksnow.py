@@ -17,9 +17,9 @@ board_coords = {
         "tile_size": 32
     },
     "advanced": {
-        "top_left": (256, 412),
-        "rows_column": (9, 9),
-        "tile_size": 46
+        "top_left": (258, 254),
+        "rows_column": (16, 30),
+        "tile_size": 32
     },
     "custom1": {
         "top_left": (472, 248),
@@ -29,10 +29,10 @@ board_coords = {
 
 }
 
-difficulty = "beginner"
+difficulty = "advanced"
 
 # delay start
-timer = 5
+timer = 2
 for i in range(timer, 0, -1):
     print(f'{i}...')
     time.sleep(1)
@@ -67,7 +67,7 @@ def make_pixel_grid(image):
             # the pixel to consider
             x1 = column * tile_size + (tile_size * 1 / 16)
             x = column * tile_size + (tile_size * 7 / 16)
-            y = row * tile_size + (tile_size * 13 / 16)
+            y = row * tile_size + (tile_size * 12 / 16)
 
             pixel = image.getpixel((x, y))
 
@@ -81,11 +81,11 @@ def make_pixel_grid(image):
                     #value = str(pixel)
 
             # assign values to colors
-            elif pixel == (47, 47, 238):
+            elif pixel == (0, 0, 255):
                 value = '1'
-            elif pixel == (47, 139, 47):
+            elif pixel == (0, 123, 0):
                 value = '2'
-            elif pixel == (238, 47, 47):
+            elif pixel == (255, 0, 0):
                 value = '3'
             elif pixel == (0, 0, 123):
                 value = '4'
@@ -127,3 +127,20 @@ def get_neighbours(row, column):
 
 
 print(f'neighbours: {get_neighbours(2, 1)}')
+
+def get_tile_row_colors(image, row, col, y_offset, tile_size=32):
+    image = PIL.Image.frombytes("RGB", image.size, image.tobytes())
+    colors = []
+    # compute tile top-left (relative to cropped image)
+    tile_x = col * tile_size
+    tile_y = row * tile_size
+
+    for x in range(tile_size):
+        pixel = image.getpixel((tile_x + x, tile_y + y_offset))
+        colors.append(pixel)
+
+    return colors
+
+row_colors = get_tile_row_colors(screenshot1, row=0, col=5, y_offset=24)
+
+print(row_colors)

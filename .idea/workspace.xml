@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8cee5b77-6857-430d-952b-3df6a67b05be" name="Changes" comment="the game">
-      <change afterPath="$PROJECT_DIR$/grid_data_old.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/CPA - Minesweeper.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CPA - Minesweeper.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="8cee5b77-6857-430d-952b-3df6a67b05be" name="Changes" comment="program">
+      <change afterPath="$PROJECT_DIR$/stuff.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extra.py" beforeDir="false" afterPath="$PROJECT_DIR$/grid_data_ithinkitworksnow.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/grid_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/grid_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grid_data_ithinkitworksnow.py" beforeDir="false" afterPath="$PROJECT_DIR$/grid_data_ithinkitworksnow.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +57,7 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Python.extra.executor": "Run",
     "Python.grid_data.executor": "Run",
+    "Python.grid_data_ithinkitworksnow.executor": "Run",
     "Python.grid_data_old.executor": "Run",
     "Python.mouse_position.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -171,7 +170,23 @@
       <option name="project" value="LOCAL" />
       <updated>1757344840765</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="program">
+      <option name="closed" value="true" />
+      <created>1757356355030</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1757356355030</updated>
+    </task>
+    <task id="LOCAL-00006" summary="program">
+      <option name="closed" value="true" />
+      <created>1757356506643</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1757356506643</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -189,6 +204,7 @@
     <MESSAGE value="the game" />
     <MESSAGE value="programs" />
     <MESSAGE value="idek" />
-    <option name="LAST_COMMIT_MESSAGE" value="idek" />
+    <MESSAGE value="program" />
+    <option name="LAST_COMMIT_MESSAGE" value="program" />
   </component>
 </project>
