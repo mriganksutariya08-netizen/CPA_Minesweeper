@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8cee5b77-6857-430d-952b-3df6a67b05be" name="Changes" comment="the game">
-      <change beforePath="$PROJECT_DIR$/.idea/CPA - Minesweeper.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CPA - Minesweeper.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grid_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/grid_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mouse_position.py" beforeDir="false" afterPath="$PROJECT_DIR$/mouse_position.py" afterDir="false" />
-    </list>
+    <list default="true" id="8cee5b77-6857-430d-952b-3df6a67b05be" name="Changes" comment="the game" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,6 +26,9 @@
     &quot;assignee&quot;: &quot;mriganksutariya08-netizen&quot;
   }
 }</component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="462cf3ab-a608-456a-ae2a-38531f790fba" />
+  </component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/mriganksutariya08-netizen/CPA_Minesweeper.git&quot;,
@@ -83,8 +81,27 @@
       <option name="project" value="LOCAL" />
       <updated>1757161030394</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="the game">
+      <option name="closed" value="true" />
+      <created>1757344438380</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1757344438380</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="the game" />
