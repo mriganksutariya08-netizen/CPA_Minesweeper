@@ -1,5 +1,5 @@
 import pyautogui
-from PIL import Image
+
 import time
 
 # A dictionary to store Minesweeper board corners
