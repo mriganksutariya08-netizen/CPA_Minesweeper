@@ -65,15 +65,15 @@ def make_pixel_grid(image):
         grid_row = []
         for column in range(columns):
             # the pixel to consider
-            x1 = column * tile_size
-            x = column * tile_size + (tile_size * 7 // 16)
-            y = row * tile_size + (tile_size * 13 // 16)
+            x1 = column * tile_size + (tile_size * 1 / 16)
+            x = column * tile_size + (tile_size * 7 / 16)
+            y = row * tile_size + (tile_size * 13 / 16)
 
             pixel = image.getpixel((x, y))
 
             if pixel == (189, 189, 189):
                 # check if it is opened or unopened
-                corner_pixel = image.getpixel((x1 + 2, y))
+                corner_pixel = image.getpixel((x1, y))
                 if corner_pixel == (255, 255, 255):
                     value = '-'
                 else:
