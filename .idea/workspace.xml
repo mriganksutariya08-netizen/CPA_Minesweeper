@@ -5,10 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8cee5b77-6857-430d-952b-3df6a67b05be" name="Changes" comment="the game">
-      <change afterPath="$PROJECT_DIR$/extra.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/grid_data_old.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/CPA - Minesweeper.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CPA - Minesweeper.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extra.py" beforeDir="false" afterPath="$PROJECT_DIR$/grid_data_ithinkitworksnow.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/grid_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/grid_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mouse_position.py" beforeDir="false" afterPath="$PROJECT_DIR$/mouse_position.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +57,9 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.extra.executor": "Run",
     "Python.grid_data.executor": "Run",
+    "Python.grid_data_old.executor": "Run",
     "Python.mouse_position.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -64,7 +68,7 @@
     "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
   }
 }]]></component>
-  <component name="RunManager" selected="Python.grid_data">
+  <component name="RunManager">
     <configuration name="grid_data" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="CPA - Minesweeper" />
       <option name="ENV_FILES" value="" />
@@ -109,10 +113,14 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Python.grid_data" />
+      <item itemvalue="Python.mouse_position" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.grid_data" />
         <item itemvalue="Python.mouse_position" />
+        <item itemvalue="Python.grid_data" />
       </list>
     </recent_temporary>
   </component>
@@ -179,6 +187,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="the game" />
-    <option name="LAST_COMMIT_MESSAGE" value="the game" />
+    <MESSAGE value="programs" />
+    <MESSAGE value="idek" />
+    <option name="LAST_COMMIT_MESSAGE" value="idek" />
   </component>
 </project>
