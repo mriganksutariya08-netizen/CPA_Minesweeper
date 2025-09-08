@@ -1,12 +1,12 @@
 import pyautogui
-from PIL import Image
+
 import time
 
 # A dictionary to store Minesweeper board corners
-# values 200% zoom of minesweeperonline.com in firefox window
+# values 200% zoom of minesweeperonline.com in a firefox window
 board_coords = {
     "beginner": {
-        "top_left": (492, 248),   # (x, y)
+        "top_left": (492, 248),
         "bottom_right": (780, 536),
         "rows_column": (9, 9)
     },
@@ -88,5 +88,19 @@ for row in range (rows):
 for row in grid:
     print(" ".join(row))
 
+print(grid)
 
+def get_neighbours (row, column):
+    #neighboring values from top left clockwise
+    neighbours = []
+    for i in range(-1,2,1):
+        neighbours.append(grid[row-1][column+i])
+    neighbours.append(grid[row][column+1])
 
+    for i in range(-1,2,1):
+        neighbours.append(grid[row+1][column-i])
+    neighbours.append(grid[row][column-1])
+
+    return neighbours
+
+print(get_neighbours(5,6))
