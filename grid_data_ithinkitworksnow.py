@@ -2,7 +2,8 @@ import PIL
 import pyautogui
 import time
 
-# A dictionary to store Minesweeper board corners
+# A dictionary to store Minesweeper board values
+# colors from minesweeperonline.com
 # only beginner value works on my laptop rn
 
 board_coords = {
@@ -22,14 +23,14 @@ board_coords = {
         "tile_size": 32
     },
     "custom1": {
-        "top_left": (472, 248),
+        "top_left": (148, 486),
         "rows_column": (16, 30),
-        "tile_size": 32
+        "tile_size": 48
     }
 
 }
 
-difficulty = "advanced"
+difficulty = "custom1"
 
 # delay start
 timer = 2
@@ -128,7 +129,7 @@ def get_neighbours(row, column):
 
 print(f'neighbours: {get_neighbours(2, 1)}')
 
-def get_tile_row_colors(image, row, col, y_offset, tile_size=32):
+def get_tile_row_colors(image, row, col, y_offset, tile_size):
     image = PIL.Image.frombytes("RGB", image.size, image.tobytes())
     colors = []
     # compute tile top-left (relative to cropped image)
@@ -141,6 +142,6 @@ def get_tile_row_colors(image, row, col, y_offset, tile_size=32):
 
     return colors
 
-row_colors = get_tile_row_colors(screenshot1, row=0, col=5, y_offset=24)
+row_colors = get_tile_row_colors(screenshot1, row=0, col=4, y_offset=8, tile_size=16)
 
 print(row_colors)

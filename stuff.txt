@@ -15,4 +15,4 @@ idk wht PIL.Image is doing but it's working
 
 now we gotta start with the human type algorithm
 
-also maybe copy the html code of the game to run locally
+@mantra also maybe copy the html code of the game to run locally
