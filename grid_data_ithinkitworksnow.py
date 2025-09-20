@@ -8,7 +8,7 @@ import time
 
 board_coords = {
     "beginner": {
-        "top_left": (484, 282),
+        "top_left": (260, 252),
         "rows_column": (9, 9),
         "tile_size": 32
     },
@@ -30,7 +30,7 @@ board_coords = {
 
 }
 
-difficulty = "custom1"
+difficulty = "beginner"
 
 # delay start
 timer = 2
@@ -67,7 +67,7 @@ def make_pixel_grid(image):
         for column in range(columns):
             # the pixel to consider
             x1 = column * tile_size + (tile_size * 1 / 16)
-            x = column * tile_size + (tile_size * 7 / 16)
+            x = column * tile_size + (tile_size * 10 / 16)
             y = row * tile_size + (tile_size * 12 / 16)
 
             pixel = image.getpixel((x, y))
@@ -91,6 +91,8 @@ def make_pixel_grid(image):
             elif pixel == (0, 0, 123):
                 value = '4'
 
+            elif pixel == (0, 0, 0):
+                value = 'F'
 
 
 
@@ -108,7 +110,6 @@ def make_pixel_grid(image):
 
     return grid
 
-
 grid = make_pixel_grid(screenshot1)
 print(grid)
 
@@ -125,9 +126,7 @@ def get_neighbours(row, column):
     neighbours.append(grid[row][column - 1])
 
     return neighbours
-
-
-print(f'neighbours: {get_neighbours(2, 1)}')
+#print(f'neighbours: {get_neighbours(2, 1)}')
 
 def get_tile_row_colors(image, row, col, y_offset, tile_size):
     image = PIL.Image.frombytes("RGB", image.size, image.tobytes())
@@ -142,6 +141,5 @@ def get_tile_row_colors(image, row, col, y_offset, tile_size):
 
     return colors
 
-row_colors = get_tile_row_colors(screenshot1, row=0, col=4, y_offset=8, tile_size=16)
-
-print(row_colors)
+row_colors = get_tile_row_colors(screenshot1,0, 4, 8, 16)
+#print(row_colors)
