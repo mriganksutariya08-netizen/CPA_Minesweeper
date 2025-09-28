@@ -67,6 +67,10 @@ if __name__ == "__main__":
         print(f"new flags are at: {flags}")
         print(f"new safe tiles are at: {safes}")
 
+        if not flags and not safes:
+            print("no more moves possible using rules 1 & 2")
+            break
+
         #code breaks in first iteration
         if 1 == 1:
             time.sleep(0.1)
@@ -74,10 +78,6 @@ if __name__ == "__main__":
         left_clicker(safes)
         right_clicker(flags)
         #time.sleep(0.1)
-
-        if not flags and not safes:
-            print("no more moves possible using rules 1 & 2")
-            break
 
         i += 1
     end = time.perf_counter()
