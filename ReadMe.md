@@ -1,4 +1,3 @@
-game.py is made by chatgpt
 
 dont zoom in the browser!!!!!!!
 anti aliasing issues
@@ -11,8 +10,8 @@ grid_data makes nested list for box values
 get_neighbours() gives list of 8 surround boxes -
 yet to make a case for error for edge boxes
 
-idk wht PIL.Image is doing but it's working
 
 now we gotta start with the human type algorithm
 
-@mantra also maybe copy the html code of the game to run locally
+29/9
+human type algorithm is done
