@@ -2,7 +2,7 @@ import pyautogui
 import time
 
 #delay start
-timer = 5
+timer = 4
 for i in range(timer,0,-1):
     print(f'{i}...')
     time.sleep(1)

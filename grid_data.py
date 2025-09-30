@@ -14,14 +14,15 @@ import pyautogui
 # -----------------------
 # Each entry: (top_left_x, top_left_y, rows, cols, tile_size)
 BOARD_COORDS = {
-    "beginner":  (260, 252, 9,  9,  32),
-    "intermediate": (260, 252, 16, 16, 32),
+    "beginner":  (260, 158, 9,  9,  32),
+    "intermediate": (260, 158, 16, 16, 32),
     "advanced":  (258, 254, 16, 30, 32),
-    "custom1":   (148, 486, 16, 30, 48),
+    "custom1":   (260, 158, 20, 30, 32),
 }
 
 # default difficulty you can change
-DIFFICULTY = "beginner"
+DIFFICULTY = "custom1"
+FLAG_NUMBER = 100
 
 # color -> value mapping (exact RGB matches)
 COLOR_VALUE_MAP = {
@@ -30,14 +31,17 @@ COLOR_VALUE_MAP = {
     (0, 123, 0): "2",
     (255, 0, 0): "3",
     (0, 0, 123): "4",
+    (123, 0, 0): "5",
+    (0, 123, 123): "6",
     (0, 0, 0): "7",
+    (123, 123, 123): "8"
 }
 
 # -----------------------
 # Small helpers
 # -----------------------
-def print_board_info(board):
-    tx, ty, rows, cols, tile = board
+def print_board_info():
+    tx, ty, rows, cols, tile = BOARD_COORDS[DIFFICULTY]
     br_x = tx + cols * tile
     br_y = ty + rows * tile
     print("Top-left:", (tx, ty))
@@ -51,6 +55,8 @@ def countdown(seconds):
         print(i, "...")
         time.sleep(1)
 
+def occurrence_counter(grid, v):
+    return sum(1 for row in grid for value in row if value == v)
 
 # -----------------------
 # Absolute pixel coords
@@ -92,10 +98,11 @@ def sample_coords(col, row, tile):
     """
     base_x = col * tile
     base_y = row * tile
-    main_x = int(base_x + (10 * tile) / 16)
-    corner_x = int(base_x + (1 * tile) / 16)
+    sample_x = int(base_x + (10 * tile) / 16)
+    corner_x = int(base_x + (2 * tile) / 16)
     sample_y = int(base_y + (12 * tile) / 16)
-    return (main_x, sample_y), (corner_x, sample_y)
+    corner_y = int(base_y + (2 * tile) / 16)
+    return (sample_x, sample_y), (corner_x, corner_y)
 
 
 # -----------------------
@@ -124,6 +131,8 @@ def make_pixel_grid(img, board):
                 corner_pixel = img.getpixel((cx, cy))
                 if corner_pixel == (255, 255, 255):
                     value = "F"
+                elif corner_pixel == (255, 0, 0):
+                    value = "M"
                 else:
                     value = "7"
 
@@ -143,7 +152,6 @@ def make_pixel_grid(img, board):
 def grid_print(grid):
     for row in grid:
         print(" ".join(row))
-
 
 # -----------------------
 # Neighbour helper
@@ -178,6 +186,6 @@ def run(difficulty=DIFFICULTY):
 
 
 if __name__ == "__main__":
-    print_board_info(BOARD_COORDS[DIFFICULTY])
-    grid = run(DIFFICULTY)
+    print_board_info()
+    grid = run(DIFFICULTY)[0]
     grid_print(grid)

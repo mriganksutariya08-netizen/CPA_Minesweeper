@@ -2,7 +2,7 @@
 
 #if the number of hidden tiles equals the number, all are flags
 
-from grid_data_refactored import run, get_neighbours, DIFFICULTY,grid_print
+from grid_data import run, get_neighbours, DIFFICULTY, grid_print
 
 
 def apply_rule1(grid):
@@ -33,6 +33,7 @@ def apply_rule1(grid):
                         if 0 <= nr < rows and 0 <= nc < cols:
                             if grid[nr][nc] == "-":
                                 new_grid[nr][nc] = "F"
+
     return new_grid
 
 
@@ -47,6 +48,7 @@ def apply_rule2(grid):
             tile = grid[r][c]
 
             # act only on numbered tiles
+
             if tile in ["1","2","3","4","5","6","7","8"]:
                 neighbours = get_neighbours(r, c, grid)
                 #print(neighbours)
@@ -81,8 +83,9 @@ def change_map(grid1, grid2):
     return changes
 
 def solver_run(grid):
-    updated_grid = apply_rule1(grid)
+    updated_grid= apply_rule1(grid)
     updated_grid = apply_rule2(updated_grid)
+
 
     return change_map(grid, updated_grid)
 
