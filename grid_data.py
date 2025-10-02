@@ -16,13 +16,13 @@ import pyautogui
 BOARD_COORDS = {
     "beginner":  (260, 158, 9,  9,  32),
     "intermediate": (260, 158, 16, 16, 32),
-    "advanced":  (258, 254, 16, 30, 32),
+    "expert":  (260, 158, 16, 30, 32),
     "custom1":   (260, 158, 20, 30, 32),
 }
 
 # default difficulty you can change
-DIFFICULTY = "custom1"
-FLAG_NUMBER = 100
+DIFFICULTY = "expert"
+FLAG_NUMBER = 99
 
 # color -> value mapping (exact RGB matches)
 COLOR_VALUE_MAP = {

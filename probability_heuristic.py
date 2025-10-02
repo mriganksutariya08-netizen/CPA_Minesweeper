@@ -1,6 +1,7 @@
 # probability_heuristic.py (Modified: score_map and 'F' as open)
 from collections import defaultdict
 from grid_data import run, DIFFICULTY
+import random
 
 DIRS = [(-1,-1),(-1,0),(-1,1),(0,-1),(0,1),(1,-1),(1,0),(1,1)]
 
@@ -89,7 +90,7 @@ def choose_lowest_prob_cell(grid):
     candidates = list(prob_map.keys())
 
     # prefer candidates that have at least this many opened neighbors
-    min_open_thresholds = [ 3, 2, 0]
+    min_open_thresholds = [4, 3, 2, 0]
     filtered = []
     for thr in min_open_thresholds:
         filtered = [coord for coord in candidates if _neighbour_counts(grid, coord[0], coord[1])[0] >= thr]
@@ -101,7 +102,7 @@ def choose_lowest_prob_cell(grid):
         filtered = candidates
 
     # scoring
-    weight_unknown_penalty = 0.4
+    weight_unknown_penalty = 0.3
     best = None
     best_score = float('inf')
 
@@ -111,7 +112,7 @@ def choose_lowest_prob_cell(grid):
         open_n, unknown_n = _neighbour_counts(grid, r, c)
         # penalty normalized by max neighbours (8)
         penalty = weight_unknown_penalty * (unknown_n / 8.0)
-        score = p + penalty
+        score = p + penalty + random.uniform(0, 0.1)
 
         # Store the calculated score
         score_map[coord] = score
@@ -133,6 +134,9 @@ def choose_lowest_prob_cell(grid):
 
     # Return the chosen best coordinate and the map of all scores
     return best, score_map
+
+
+
 
 if __name__ == "__main__":
     grid = run(DIFFICULTY)[0]

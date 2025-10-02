@@ -42,6 +42,7 @@ while True:
 
     if not flags and not safes:
         print("no more moves possible using rules 1 & 2")
+        # fallback to probability heuristic
         lowest_prob, prob_map = choose_lowest_prob_cell(grid)
         print(prob_map)
         print(f"lowest probability cell is {lowest_prob}")
@@ -52,9 +53,8 @@ while True:
             break
 
 
-
-    left_clicker(safes)
     right_clicker(flags)
+    left_clicker(safes)
     time.sleep(0.05)
 
     if len(flags_found) >= FLAG_NUMBER:
