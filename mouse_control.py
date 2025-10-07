@@ -3,9 +3,8 @@ from pynput.mouse import Controller, Button
 from grid_data import DIFFICULTY, BOARD_COORDS
 mouse = Controller()
 
-
+'''get the position of each flag and safe in the grid'''
 def get_flags_and_safes_locations(changes, coord_grid):
-
     flag_positions = []
     safe_positions = []
     rows = len(changes)

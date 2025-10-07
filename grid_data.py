@@ -1,10 +1,3 @@
-#!/usr/bin/env python3
-"""
-Simplified Minesweeper board sampler (no dataclasses, no typing).
-- Keeps the original sampling logic and color mappings.
-- Easier to read for school projects.
-- Uses PIL (Pillow) and pyautogui for screenshots.
-"""
 
 import time
 import pyautogui
@@ -12,7 +5,11 @@ import pyautogui
 # -----------------------
 # Board definitions
 # -----------------------
-# Each entry: (top_left_x, top_left_y, rows, cols, tile_size)
+'''
+Each entry: (top_left_x, top_left_y, rows, cols, tile_size)
+make sure new entries follow this format
+'''
+
 BOARD_COORDS = {
     "beginner":  (260, 158, 9,  9,  32),
     "intermediate": (260, 158, 16, 16, 32),
@@ -20,11 +17,11 @@ BOARD_COORDS = {
     "custom1":   (260, 158, 20, 30, 32),
 }
 
-# default difficulty you can change
-DIFFICULTY = "expert"
-FLAG_NUMBER = 99
+'''set difficulty and flag number '''
+DIFFICULTY = "intermediate"
+FLAG_NUMBER = 40
 
-# color -> value mapping (exact RGB matches)
+# color -> value mapping for exact RGB matches
 COLOR_VALUE_MAP = {
     (189, 189, 189): None,  # special-case in code
     (0, 0, 255): "1",
@@ -50,7 +47,6 @@ def print_board_info():
 
 
 def countdown(seconds):
-    """Simple blocking countdown before taking screenshot."""
     for i in range(seconds, 0, -1):
         print(i, "...")
         time.sleep(1)
@@ -61,17 +57,17 @@ def occurrence_counter(grid, v):
 # -----------------------
 # Absolute pixel coords
 # -----------------------
+"""
+Return a 2D list where each element is the absolute screen coordinate
+(x, y) of the sample pixel for that tile.
+"""
 def real_coord_grid(board):
-    """
-    Return a 2D list where each element is the absolute screen coordinate
-    (x, y) of the sample pixel for that tile.
-    """
     tx, ty, rows, cols, tile = board
     coords = []
     for r in range(rows):
         row_coords = []
         for c in range(cols):
-            (mx, my), _ = sample_coords(c, r, tile)
+            (mx, my)= sample_coords(c, r, tile)[0]
             # add top-left offset to get real screen coords
             abs_x = tx + mx
             abs_y = ty + my
@@ -83,19 +79,16 @@ def real_coord_grid(board):
 # Screenshot & sampling
 # -----------------------
 def capture_board_screenshot(board):
-    """Take a screenshot cropped to the board rectangle and return a PIL image."""
+    #Take a screenshot cropped to the board rectangle
     tx, ty, rows, cols, tile = board
     width = cols * tile
     height = rows * tile
     return pyautogui.screenshot(region=(tx, ty, width, height))
 
 
+'''return two sets of coords, centre and corner'''
 def sample_coords(col, row, tile):
-    """
-    Return two pixel coordinates inside a tile (relative to cropped board image):
-      - main sample: used to read the tile color
-      - corner sample: used when color is the grey (189,189,189) to disambiguate
-    """
+
     base_x = col * tile
     base_y = row * tile
     sample_x = int(base_x + (10 * tile) / 16)
@@ -108,8 +101,8 @@ def sample_coords(col, row, tile):
 # -----------------------
 # Grid parsing
 # -----------------------
+''' build and return a grid (list of lists) of strings representing tiles.'''
 def make_pixel_grid(img, board):
-    """Build and return a grid (list of lists) of strings representing tiles."""
     tx, ty, rows, cols, tile = board
     grid = []
 
@@ -141,7 +134,7 @@ def make_pixel_grid(img, board):
                 if mapped is not None:
                     value = mapped
                 else:
-                    # unknown color; keep raw RGB (good for debugging)
+                    #keep rbg tuple for debugging
                     value = str(pixel)
 
             row_vals.append(value)
@@ -157,11 +150,12 @@ def grid_print(grid):
 # Neighbour helper
 # -----------------------
 def get_neighbours(r, c, grid):
-    """Return a list of up to 8 neighbour values for tile (r, c)."""
+    #Return a list of 8 neighbour values for tile (r, c).
     neighbours = []
     max_r = len(grid)
-    max_c = len(grid[0]) if max_r else 0
+    max_c = len(grid[0])
     directions = [(-1,-1), (-1,0), (-1,1), (0,1), (1,1), (1,0), (1,-1), (0,-1)]
+    # clockwise from top left
     for dr, dc in directions:
         nr, nc = r + dr, c + dc
         if 0 <= nr < max_r and 0 <= nc < max_c:

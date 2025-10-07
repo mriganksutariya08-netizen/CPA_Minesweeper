@@ -21,7 +21,6 @@ while True:
         print("\noops, mb vro")
         break
 
-
     time.sleep(0.05)
     changes = solver_run(grid)
     flags, safes = get_flags_and_safes_locations(changes, coord_grid)
@@ -52,7 +51,6 @@ while True:
         else:
             break
 
-
     right_clicker(flags)
     left_clicker(safes)
     time.sleep(0.05)
@@ -62,7 +60,6 @@ while True:
         if j == 2:
             print("breaking loop")
             break
-
 
     i += 1
     print(f"time: {(time.perf_counter() - iter_start):.4f}s")

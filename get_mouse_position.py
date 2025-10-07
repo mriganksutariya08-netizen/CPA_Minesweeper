@@ -1,5 +1,11 @@
 import pyautogui
 import time
+'''
+use this file to get the values for the top_left_x and top_left_y
+note that you are supposed to hover your mouse on the corner of the tile and not the board
+please take a few readings as an error here will render the code dysfunctional
+'''
+
 
 #delay start
 timer = 4

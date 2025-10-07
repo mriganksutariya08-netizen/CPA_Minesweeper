@@ -1,4 +1,3 @@
-# probability_heuristic.py (Modified: score_map and 'F' as open)
 from collections import defaultdict
 from grid_data import run, DIFFICULTY
 import random
@@ -23,11 +22,9 @@ def as_int(cell):
     if isinstance(cell, int): return cell
     return int(cell)
 
+
+'''Return: prob_map for uncovered frontier cells only (dict coord->prob in [0,1])'''
 def compute_local_probs(grid):
-    """
-    Return: prob_map for uncovered frontier cells only (dict coord->prob in [0,1])
-    (This function remains unchanged as 'F' handling here is correct for mine counting)
-    """
     contribs = defaultdict(list)
     rows, cols = len(grid), len(grid[0])
     for r in range(rows):
@@ -57,11 +54,8 @@ def compute_local_probs(grid):
         if prob_map[coord] > 1: prob_map[coord] = 1.0
     return prob_map
 
-# ----------------------------------------------------------------------
-# MODIFIED FUNCTION: 'F' now contributes to open_n
-# ----------------------------------------------------------------------
-def _neighbour_counts(grid, r, c):
-    """Return (open_neighbors, unknown_neighbors) around (r,c)."""
+"""Return (open_neighbors, unknown_neighbors) around (r,c)."""
+def known_unknown_neighbour_counts(grid, r, c):
     open_n = 0
     unknown_n = 0
     for (rr,cc) in neighbors(grid, r, c):
@@ -72,12 +66,11 @@ def _neighbour_counts(grid, r, c):
             # treat 'F', numbers, 'S', '0', etc. as open/revealed/known
             open_n += 1
     return open_n, unknown_n
-# ----------------------------------------------------------------------
 
+'''return a dictionary of the probability of corresponding tiles'''
 def choose_lowest_prob_cell(grid):
     prob_map = compute_local_probs(grid)
-    score_map = {} # Dictionary to hold the final scores
-
+    score_map = {}
     # if no frontier — fall back to first covered tile
     if not prob_map:
         for r in range(len(grid)):
@@ -85,7 +78,6 @@ def choose_lowest_prob_cell(grid):
                 if grid[r][c] == '-':
                     return (r,c), score_map
         return None, score_map
-
     # build candidate list from prob_map keys
     candidates = list(prob_map.keys())
 
@@ -93,23 +85,22 @@ def choose_lowest_prob_cell(grid):
     min_open_thresholds = [4, 3, 2, 0]
     filtered = []
     for thr in min_open_thresholds:
-        filtered = [coord for coord in candidates if _neighbour_counts(grid, coord[0], coord[1])[0] >= thr]
+        filtered = [coord for coord in candidates if known_unknown_neighbour_counts(grid, coord[0], coord[1])[0] >= thr]
         if filtered:
             break
-
-    # if still empty, use original candidates
     if not filtered:
         filtered = candidates
 
     # scoring
     weight_unknown_penalty = 0.3
+    #set penalty for having more unknown neighbours
     best = None
     best_score = float('inf')
 
     for coord in filtered:
         r,c = coord
         p = prob_map.get(coord, 1.0)
-        open_n, unknown_n = _neighbour_counts(grid, r, c)
+        open_n, unknown_n = known_unknown_neighbour_counts(grid, r, c)
         # penalty normalized by max neighbours (8)
         penalty = weight_unknown_penalty * (unknown_n / 8.0)
         score = p + penalty + random.uniform(0, 0.1)

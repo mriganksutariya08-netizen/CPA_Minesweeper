@@ -1,10 +1,9 @@
 
 
-#if the number of hidden tiles equals the number, all are flags
 
 from grid_data import run, get_neighbours, DIFFICULTY, grid_print
 
-
+'''if the number of hidden tiles equals the number, all are flags'''
 def apply_rule1(grid):
     new_grid = [row[:] for row in grid]
     rows = len(grid)
@@ -23,7 +22,6 @@ def apply_rule1(grid):
 
 
                 # when hidden_count == tile, we mark those '-' as 'F'.
-
                 if hidden_count + flag_count == int(tile):
                     directions = [(-1,-1), (-1,0), (-1,1),
                                   (0,1), (1,1), (1,0),
@@ -37,7 +35,7 @@ def apply_rule1(grid):
     return new_grid
 
 
-#if number of flags equals the number, all other unopened tiles are safe 'S'
+'''if number of flags equals the number, all other unopened tiles are safe 'S' '''
 def apply_rule2(grid):
     new_grid = [row[:] for row in grid]
     rows = len(grid)
@@ -48,13 +46,12 @@ def apply_rule2(grid):
             tile = grid[r][c]
 
             # act only on numbered tiles
-
             if tile in ["1","2","3","4","5","6","7","8"]:
                 neighbours = get_neighbours(r, c, grid)
                 #print(neighbours)
 
                 flag_count = neighbours.count('F')
-                #when flag_count == tile, we mark the '-' as 'S'.
+                # when flag_count == tile, we mark the '-' as 'S'.
 
                 if flag_count == int(tile):
                     directions = [(-1,-1), (-1,0), (-1,1),
@@ -67,6 +64,12 @@ def apply_rule2(grid):
                                 new_grid[nr][nc] = "S"
     return new_grid
 
+
+"""
+take two lists of same size and compare them
+return the value of the second in case of difference
+else append '-'
+"""
 def change_map(grid1, grid2):
     changes = []
     rows = len(grid1)
